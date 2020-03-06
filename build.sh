@@ -19,6 +19,7 @@ docker buildx inspect --bootstrap
 echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin 
 # Phase 3 - build it
 git clone https://github.com/RedisJSON/RedisJSON2.git
+cp Dockerfile RedisJSON2/
 cd RedisJSON2
 docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t jrcichra/redisjson2 --push .
 docker buildx imagetools inspect jrcichra/redisjson2
